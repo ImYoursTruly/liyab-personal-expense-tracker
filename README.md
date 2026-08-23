@@ -118,7 +118,7 @@ Make sure you have the following installed:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/liyab-personal-expense-tracker.git
+git clone https://github.com/ImYoursTruly/liyab-personal-expense-tracker.git
 ```
 
 Enter the project directory:
