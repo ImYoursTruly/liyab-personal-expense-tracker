@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Ledger — Personal Expense Tracker</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="app-header">
+    <div class="app-header__mark">₱</div>
+    <div class="app-header__title">
+      <span class="app-header__eyebrow">Personal</span>
+      <h1>Ledger</h1>
+    </div>
+    <button id="clearAllBtn" class="app-header__ghost-btn" title="Clear all data">⟲</button>
+  </header>
+
+  <main id="app">
+
+    <!-- ===================== DASHBOARD VIEW ===================== -->
+    <section id="view-dashboard" class="view view--active">
+
+      <div class="balance-card">
+        <span class="balance-card__label">Balance</span>
+        <span class="balance-card__amount" id="statBalance">₱0.00</span>
+
+        <div class="balance-card__split">
+          <div class="balance-card__split-item">
+            <span class="dot dot--in"></span>
+            <div>
+              <span class="split-label">Income</span>
+              <span class="split-amount" id="statIncome">₱0.00</span>
+            </div>
+          </div>
+          <div class="balance-card__split-divider"></div>
+          <div class="balance-card__split-item">
+            <span class="dot dot--out"></span>
+            <div>
+              <span class="split-label">Expenses</span>
+              <span class="split-amount" id="statExpenses">₱0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-heading">
+        <h2>Recent Entries</h2>
+        <button class="link-btn" data-nav="history">See all</button>
+      </div>
+
+      <ul id="recentList" class="ledger-list"><!-- injected --></ul>
+      <p id="recentEmpty" class="empty-note" hidden>Nothing recorded yet. Tap <strong>+ Add</strong> to log your first entry.</p>
+
+      <div class="section-heading">
+        <h2>By Category</h2>
+      </div>
+      <div id="categoryBreakdown" class="category-breakdown"><!-- injected --></div>
+      <p id="categoryEmpty" class="empty-note" hidden>Category totals will appear once you add expenses.</p>
+
+    </section>
+
+    <!-- ===================== HISTORY VIEW ===================== -->
+    <section id="view-history" class="view">
+
+      <div class="history-toolbar">
+        <input id="searchInput" type="search" placeholder="Search transactions…" />
+        <select id="filterCategory">
+          <option value="all">All categories</option>
+        </select>
+      </div>
+
+      <ul id="historyList" class="ledger-list"><!-- injected --></ul>
+      <p id="historyEmpty" class="empty-note" hidden>No transactions match.</p>
+
+    </section>
+
+  </main>
+
+  <!-- ===================== BOTTOM NAV ===================== -->
+  <nav class="bottom-nav">
+    <button class="bottom-nav__item bottom-nav__item--active" data-nav="dashboard">
+      <span class="bottom-nav__icon">▤</span>
+      <span>Dashboard</span>
+    </button>
+
+    <button id="addFab" class="bottom-nav__fab" title="Add transaction">+</button>
+
+    <button class="bottom-nav__item" data-nav="history">
+      <span class="bottom-nav__icon">≡</span>
+      <span>History</span>
+    </button>
+  </nav>
+
+  <!-- ===================== ADD/EDIT SHEET ===================== -->
+  <div id="sheetBackdrop" class="sheet-backdrop" hidden></div>
+  <form id="sheet" class="sheet" hidden>
+    <div class="sheet__handle"></div>
+    <div class="sheet__header">
+      <h2 id="sheetTitle">Add Entry</h2>
+      <button type="button" id="sheetClose" class="sheet__close">✕</button>
+    </div>
+
+    <input type="hidden" id="txId" />
+
+    <div class="type-toggle">
+      <button type="button" class="type-toggle__btn type-toggle__btn--active" data-type="expense" id="typeExpenseBtn">Expense</button>
+      <button type="button" class="type-toggle__btn" data-type="income" id="typeIncomeBtn">Income</button>
+    </div>
+
+    <label class="field">
+      <span class="field__label">Amount</span>
+      <div class="amount-input">
+        <span>₱</span>
+        <input type="number" id="txAmount" inputmode="decimal" step="0.01" min="0" placeholder="0.00" required />
+      </div>
+    </label>
+
+    <label class="field">
+      <span class="field__label">Category</span>
+      <select id="txCategory" required></select>
+    </label>
+
+    <label class="field">
+      <span class="field__label">Description</span>
+      <input type="text" id="txDescription" placeholder="e.g. Lunch at canteen" maxlength="60" />
+    </label>
+
+    <label class="field">
+      <span class="field__label">Date</span>
+      <input type="date" id="txDate" required />
+    </label>
+
+    <div class="sheet__actions">
+      <button type="button" id="deleteTxBtn" class="btn btn--danger" hidden>Delete</button>
+      <button type="submit" class="btn btn--primary">Save Entry</button>
+    </div>
+  </form>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
