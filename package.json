@@ -1,0 +1,28 @@
+{
+  "name": "liyab-personal-expense-tracker",
+  "version": "1.0.0",
+  "description": "A practice app that is purely made by AI and was only created for my own satisfaction.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImYoursTruly/liyab-personal-expense-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ImYoursTruly/liyab-personal-expense-tracker/issues"
+  },
+  "homepage": "https://github.com/ImYoursTruly/liyab-personal-expense-tracker#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/core": "^8.5.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.0"
+  }
+}
